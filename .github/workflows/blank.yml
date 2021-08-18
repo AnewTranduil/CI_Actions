@@ -32,6 +32,5 @@ jobs:
           env
       - name: check xcode
         run: |
-          xcode -version
           xcodebuild -version
           xcrun --version
