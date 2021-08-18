@@ -13,7 +13,9 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: mac-mini
+    runs-on: ubuntu
+    env:
+        Test_Var: ${format({0}_{1}_{2}, ${{github.workflow}}. ${{github.run_id}}, ${{github.repository}})}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,7 +32,5 @@ jobs:
           chmod +x ./test.sh
           ./test.sh
           env
-      - name: check xcode
-        run: |
-          xcodebuild -version
-          xcrun --version
+      - name: Check var
+        run: echo $Test_Var
