@@ -4,17 +4,34 @@ version: 2.1
 orbs:
   node: circleci/node@4.7.0
 
-jobs:
-  one:
+executors:
+  my-executor:
     machine:
       image: ubuntu-2004:202101-01
+
+jobs:
+  build:
+    executor: my-executor
+    steps:
+      - run: echo 'Build step'
+  one:
+    executor: my-executor
     steps:
       - node/install:
           install-yarn: true 
           node-version: '15.6'
       - run: 
           name: 'Print to console'
-          command: echo 'Step executed'    
+          command: echo 'Step 1 executed' 
+  two:
+    executor: my-executor
+    steps:
+      - node/install:
+          install-yarn: true 
+          node-version: '15.6'
+      - run: 
+          name: 'Print to console'
+          command: echo 'Step 2 executed'             
 
 # Orchestrate or schedule a set of jobs
 workflows:
@@ -22,5 +39,11 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - one
+      - build
+      - one:
+         requires: 
+           - build
+      - two:
+          requires:
+            - build     
       
