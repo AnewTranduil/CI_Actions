@@ -13,6 +13,9 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
+    strategy:
+      matrix:
+        test-var: ["First matrix var", "Seconf matrix var"]
     runs-on: ubuntu-latest
     env:
         Test_Var: ${{ format('{0}_{1}_{2}', github.workflow, github.run_id, github.repository  ) }}
@@ -34,3 +37,7 @@ jobs:
           env
       - name: Check var
         run: echo $Test_Var
+      - name: Check matrix
+        run: echo "${{matrix.test-var}}"
+
+
