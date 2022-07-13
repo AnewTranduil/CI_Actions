@@ -16,6 +16,7 @@ jobs:
           name: batch_id
           path: batch_id 
    running:
+    needs: id
     strategy:
       matrix:
         device: ["first", "second"]
