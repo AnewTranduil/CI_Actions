@@ -34,4 +34,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           export BATCH_ID=$(cat batch_id)
-      - run: echo "$BATCH_ID"    
+          env
+      - run: |
+          echo "$BATCH_ID"
+          env
