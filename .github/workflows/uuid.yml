@@ -1,0 +1,24 @@
+name: UUID
+on:
+  workflow_dispatch:
+
+jobs:
+   id:
+    runs-on: ubuntu-latest
+    steps:
+      - name: generate uuid
+        run: echo "BATCH_ID=$(uuidgen)" >> $GITHUB_ENV
+      - name: check file
+        run: echo $BATCH_ID
+   running:
+    needs: id
+    strategy:
+      matrix:
+        device: ["first", "second"]
+    runs-on: ubuntu-latest
+    steps:        
+      - name: Run a one-line script
+        run: echo ${{matrix.device}}
+      - run: |
+          echo "$BATCH_ID"
+          env
