@@ -1,0 +1,32 @@
+name: UUID_ARTIFACTS
+
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+   id:
+    runs-on: ubuntu-latest
+    steps:
+      - name: generate uuid
+        run: uuidgen > batch_id
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: batch_id
+          path: batch_id 
+   running:
+    strategy:
+      matrix:
+        device: ["first", "second"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: batch_id
+      - name: Run a one-line script
+        run: echo ${{matrix.device}}
+      - name: Run a multi-line script
+        run: |
+          export BATCH_ID=$(cat batch_id)
+      - run: echo "$BATCH_ID"    
