@@ -7,9 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: generate uuid
-        run: echo "BATCH_ID=$(uuidgen)" >> $GITHUB_ENV
+        run: uuidgen > batch_id
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: batch_id
+          path: batch_id 
       - name: check file
-        run: echo $BATCH_ID
+        run: cat batch_id    
    running:
     needs: id
     strategy:
@@ -19,6 +24,11 @@ jobs:
     steps:        
       - name: Run a one-line script
         run: echo ${{matrix.device}}
+      - uses: actions/download-artifact@v3
+        with:
+          name: batch_id
+      - name: add env var
+        run: echo "BATCH_ID=$(cat batch_id)" >> $GITHUB_ENV        
       - run: |
           echo "$BATCH_ID"
           env
