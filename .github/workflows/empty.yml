@@ -1,0 +1,19 @@
+
+name: EMPTY
+on:
+  workflow_dispatch:
+
+jobs:
+   empty:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check empty
+        run: |
+            ls  
+            pwd
+      - name: checkout
+        uses: actions/checkout@v2      
+      - name: check cloned
+        run:  |
+            ls
+            pwd
