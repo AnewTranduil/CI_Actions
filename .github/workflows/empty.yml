@@ -2,6 +2,9 @@
 name: EMPTY
 on:
   workflow_dispatch:
+  
+env:
+  TEST_VAR: ${{github.run_id}}
 
 jobs:
    empty:
@@ -17,3 +20,5 @@ jobs:
         run:  |
             ls
             pwd
+      - name: check test env
+        run: echo "TEST_VAR env var >>> $TEST_VAR"
