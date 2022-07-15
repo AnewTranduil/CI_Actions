@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
 env:
-  TEST_VAR: ${{github.run_id}}
+  TEST_VAR: "CHECK_${{github.run_id}}"
 
 jobs:
    empty:
