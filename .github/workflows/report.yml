@@ -33,7 +33,9 @@ jobs:
     # email subject
           subject: Report from ${{ github.repository }} has failed job
     # email body as text
-          body: Worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+          body: Worflow ${{ github.workflow }} of ${{ github.repository }} has \
+                asdasdasdkiadas \
+                last line
     # comma-separated string, send email to
           to: tranduil15@gmail.com
     # from email name
