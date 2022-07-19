@@ -1,0 +1,23 @@
+name: REPORT
+
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+   running:
+    strategy:
+      matrix:
+        code: [0, 0]
+    runs-on: ubuntu-latest
+    steps:        
+      - name: Run a one-line script
+        run: echo  Code [${{matrix.code}}]
+      - name: Set job code
+        run: exit ${{matrix.code}}
+   report:
+    if: ${{always() && (needs.running=='failure')}}
+    needs: running
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Reporting a failure
