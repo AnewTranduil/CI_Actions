@@ -16,7 +16,7 @@ jobs:
       - name: Set job code
         run: exit ${{matrix.code}}
    report:
-    if: ${{always() && (needs.running.result=='failure')}}
+    if: ${{always()}}
     needs: running
     runs-on: ubuntu-latest
     steps:
