@@ -8,7 +8,7 @@ jobs:
    running:
     strategy:
       matrix:
-        code: [0, 0]
+        code: [0, 0, 1]
     runs-on: ubuntu-latest
     steps:        
       - name: Run a one-line script
