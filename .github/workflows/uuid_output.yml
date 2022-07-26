@@ -1,0 +1,29 @@
+name: UUID_OUTPUT
+on:
+  workflow_dispatch:
+
+jobs:
+   id:
+    runs-on: ubuntu-latest
+    outputs:
+      uuid: ${{ steps.uuid.outputs }}
+    steps:
+      - name: generate uuid
+        id: uuid
+        run: uuidgen  
+   running:
+    needs: id
+    strategy:
+      matrix:
+        device: ["first", "second"]
+    runs-on: ubuntu-latest
+    steps:        
+      - name: Run matrix name
+        run: echo ${{matrix.device}}
+      - name: Run needed output
+        run: echo ${{needs.id.outputs.uuid}}        
+      - name: add env var
+        run: echo "BATCH_ID=${{needs.id.outputs.uuid}} " >> $GITHUB_ENV        
+      - run: |
+          echo "$BATCH_ID"
+          env
