@@ -1,0 +1,15 @@
+
+
+name: MAC_DEVICES
+on:
+  workflow_dispatch:
+  
+env:
+  TEST_VAR: "CHECK_${{github.run_id}}"
+
+jobs:
+   empty:
+    runs-on: macos-latest
+    steps:
+      - name: check devices
+        run: xcrun xctrace list devices
