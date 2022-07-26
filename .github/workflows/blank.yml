@@ -15,7 +15,11 @@ jobs:
     # The type of runner that the job will run on
     strategy:
       matrix:
-        test-var: ["First matrix var", "Seconf matrix var"]
+        device: ["iPhone 8", "iPad Pro (12.9-inch) (5th generation)"]
+        include:
+          - only: '-only-testing "EndToEndTests/AwesomeSwiftUITests" -only-testing "EndToEndTests/BeamUITests" -only-testing "EndToEndTests/CalcupadUITests" -only-testing "EndToEndTests/DuckDuckGoUITests" -only-testing "EndToEndTests/HapticHavenUITests" -only-testing "EndToEndTests/NetNewsWireUITests" -only-testing "EndToEndTests/Swift2048UITests" -only-testing "EndToEndTests/SwiftWeatherUITests"'
+          - only: '-only-testing "EndToEndTests/TrackMyTimeUITests" -only-testing "EndToEndTests/UnwrapUITests" -only-testing "EndToEndTests/UIKitCatalogUITests" -only-testing "EndToEndTests/WikipediaUITests" -only-testing "EndToEndTests/YoutubeUITests" -only-testing "EndToEndTests/OpenShopUITests"'
+          - only: '-only-testing "EndToEndTests/StocksUITests" -only-testing "EndToEndTests/KickstarterUITests" -only-testing "EndToEndTests/SettingsUITests" -only-testing "EndToEndTests/ContactsUITests" -only-testing "EndToEndTests/HealthUITests" -only-testing "EndToEndTests/CalendarUITests"'
     runs-on: ubuntu-latest
     env:
         Test_Var: ${{ format('{0}_{1}_{2}', github.workflow, github.run_id, github.repository  ) }}
@@ -37,7 +41,9 @@ jobs:
           env
       - name: Check var
         run: echo $Test_Var
-      - name: Check matrix
-        run: echo "${{matrix.test-var}}"
+      - name: Check matrix device
+        run: echo "${{matrix.device}}"
+      - name: Check matrix only
+        run: echo "${{matrix.only}}"  
 
 
