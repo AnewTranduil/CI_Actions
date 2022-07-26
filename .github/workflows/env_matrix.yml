@@ -1,4 +1,4 @@
-name: CI
+name: ENV Matrix
 
 on:
   workflow_dispatch:
