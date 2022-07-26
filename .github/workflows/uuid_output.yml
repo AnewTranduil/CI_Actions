@@ -10,7 +10,9 @@ jobs:
     steps:
       - name: generate uuid
         id: uuid
-        run: echo '::set-output name=uuid::$(uuidgen)'  
+        run: |
+          TEST=checking
+          echo "::set-output name=uuid::$TEST"  
    running:
     needs: id
     strategy:
