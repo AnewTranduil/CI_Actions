@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+env:
+  one: "First variable"
+  two: "Second variable"
+  three: "Third variable"
+
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        var: [env.one, env.two, env.three]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: echo ${{matrix.var}}
