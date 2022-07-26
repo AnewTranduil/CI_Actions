@@ -6,11 +6,11 @@ jobs:
    id:
     runs-on: ubuntu-latest
     outputs:
-      uuid: ${{ steps.uuid.outputs }}
+      uuid: ${{ steps.uuid.outputs.uuid }}
     steps:
       - name: generate uuid
         id: uuid
-        run: uuidgen  
+        run: echo '::set-output name=uuid::$(uuidgen)'  
    running:
     needs: id
     strategy:
