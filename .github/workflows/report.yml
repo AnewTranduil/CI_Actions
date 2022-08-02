@@ -49,7 +49,7 @@ jobs:
           html_body: Worflow ${{ github.workflow }} of ${{ github.repository }} has <br>
                      asdasdasd asd<br>
                      Testing new line <br>
-                     A
+                     ${{needs}}
             
     # comma-separated string, send email to
           to: tranduil15@gmail.com
