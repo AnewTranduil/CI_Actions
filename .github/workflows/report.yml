@@ -5,6 +5,16 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+   checking:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        code: [0, 0, 0]
+    steps:
+      - name: Run a one-line script
+        run: echo  Code [${{matrix.code}}]
+      - name: Set job code
+        run: exit ${{matrix.code}}
    running:
     strategy:
       matrix:
@@ -16,8 +26,8 @@ jobs:
       - name: Set job code
         run: exit ${{matrix.code}}
    report:
-    if: ${{always()}}
-    needs: running
+    if: ${{always() && needs.*.result=='failure'}}
+    needs: [running, checking]
     runs-on: ubuntu-latest
     steps:
       - run: echo Reporting a failure
