@@ -32,7 +32,7 @@ jobs:
    mail:
      if: ${{failure() && github.run_attemp > 1}}
      runs-on: ubuntu-latest
-     needs: [report, rerun]
+     needs: [report, rerun, passed, failing]
      steps: 
        - name: Print
          run: echo "I am sending an email here"
