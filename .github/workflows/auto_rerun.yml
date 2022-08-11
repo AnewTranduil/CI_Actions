@@ -26,8 +26,6 @@ jobs:
     if: failure()
     runs-on: ubuntu-latest
     needs: [passed, failing, report]
-    env: 
-      failure: ${{failure()}}
     steps:
       - name: log env
         run: echo ${{env.failure}}
