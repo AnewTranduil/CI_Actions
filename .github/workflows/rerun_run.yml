@@ -1,0 +1,15 @@
+name: rerun
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        required: true
+        description: rerun id
+    
+
+jobs:
+   rerun:
+    runs-on: ubuntu-latest
+    steps:
+      - name: rerun
+        run: curl -X POST -s -u "admin:${{ github.token }}" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.run_id }}/rerun-failed-jobs
