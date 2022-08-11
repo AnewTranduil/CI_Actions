@@ -1,0 +1,24 @@
+name: Auto rerun
+on:
+  workflow_dispatch:
+
+jobs:
+   passed:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "I am passed"
+   failing:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: first fail
+        if: run_attempt == 1
+        run: exit 1
+      - name: second pass
+        run: echo "I am passed too"
+   
+   rerun:
+     runs-on: ubuntu-latest
+     needs: [passed, failing]
+     steps:
+      - name: jobs
+        run: curl -X GET -s -u "admin:${{ github.token }}" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs
