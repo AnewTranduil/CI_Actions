@@ -20,4 +20,4 @@ jobs:
      needs: matrix
      steps:
       - name: print
-        run: echo ${{toJSON(needs)}}
+        run: echo "${{toJSON(needs)}}"
