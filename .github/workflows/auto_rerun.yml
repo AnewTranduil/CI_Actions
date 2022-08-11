@@ -22,22 +22,24 @@ jobs:
      steps:
       - name: jobs
         run: curl -X GET -H "Accept:application/vnd.github+json" -s -u "admin:${{ github.token }}" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs
+   mail:
+     if: failure()
+     runs-on: ubuntu-latest
+     needs: [report]
+     steps: 
+       - name: Print
+         if: github.run_attempt > 1
+         run: echo "I am sending an email"
    rerun:
     if: failure()
     runs-on: ubuntu-latest
-    needs: [report]
+    needs: [report, mail]
     steps:
       - name: log env
         run: echo ${{env.failure}}
       - name: rerun
         if: github.run_attempt == 1
         run: curl -X POST -H "Accept:application/vnd.github+json" -H "Content-Type:application/json" -s -u "admin:${{ secrets.PAT }}" https://api.github.com/repos/${{ github.repository }}/actions/workflows/rerun_run.yml/dispatches -d '{"ref":"main", "inputs":{"run_id":"${{github.run_id}}"}}'
-   mail:
-     if: ${{failure() && github.run_attemp > 1}}
-     runs-on: ubuntu-latest
-     needs: [report, rerun]
-     steps: 
-       - name: Print
-         run: echo "I am sending an email"
+
       
        
