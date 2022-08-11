@@ -35,4 +35,5 @@ jobs:
      needs: [report, rerun, passed, failing]
      steps: 
        - name: Print
+         if: github.run_attempt > 1
          run: echo "I am sending an email here"
