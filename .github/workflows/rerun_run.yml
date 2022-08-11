@@ -11,5 +11,7 @@ jobs:
    rerun:
     runs-on: ubuntu-latest
     steps:
+      - name: Small wait
+        run: sleep 5
       - name: rerun
         run: curl -X POST -s -u "admin:${{ github.token }}" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ inputs.run_id }}/rerun-failed-jobs
