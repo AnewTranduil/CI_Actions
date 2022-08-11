@@ -1,4 +1,4 @@
-name: Auto rerun
+name: Auto rerun fail
 on:
   workflow_dispatch:
 
