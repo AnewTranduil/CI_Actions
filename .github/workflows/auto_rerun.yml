@@ -33,7 +33,7 @@ jobs:
         if: github.run_attempt == 1
         run: curl -X POST -H "Accept:application/vnd.github+json" -H "Content-Type:application/json" -s -u "admin:${{ secrets.PAT }}" https://api.github.com/repos/${{ github.repository }}/actions/workflows/rerun_run.yml/dispatches -d '{"ref":"main", "inputs":{"run_id":"${{github.run_id}}"}}'
    mail:
-     if: failure()
+     if: ${{failure() && github.run_attemp > 1}}
      runs-on: ubuntu-latest
      needs: [report, rerun]
      steps: 
