@@ -10,7 +10,7 @@ jobs:
         device: ["first", "second"]
         id: [1, 2]
     outputs:
-      ${{format('device_${0}_${1}',  matrix.device, matrix.id)}}: ${{matrix.device}}
+      format('device_${0}_${1}',  ${{matrix.device}}, ${{matrix.id}}): ${{matrix.device}}
     runs-on: ubuntu-latest
     steps:        
       - name: Run matrix name
