@@ -9,8 +9,6 @@ jobs:
       matrix:
         device: ["first", "second"]
         id: [1, 2]
-    outputs:
-      format('device_${0}_${1}',  ${{matrix.device}}, ${{matrix.id}}): ${{matrix.device}}
     runs-on: ubuntu-latest
     steps:        
       - name: Run matrix name
@@ -21,4 +19,4 @@ jobs:
      needs: matrix
      steps:
       - name: print
-        run: echo "${{toJSON(needs)}}"
+        run: $(curl -X GET -s -u "admin:${{ github.token }}" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs
