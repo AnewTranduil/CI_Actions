@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: first fail
-        if: github.run_attempt == 1
+        if: github.run_attempt == 2
         run: exit 1
       - name: second pass
         run: echo "I am passed too"
