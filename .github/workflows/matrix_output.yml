@@ -1,0 +1,23 @@
+
+name: Matrix_output
+on:
+  workflow_dispatch:
+
+jobs:
+   matrix:
+    strategy:
+      matrix:
+        device: ["first", "second"]
+    outputs:
+      device: ${{steps.device.outputs.device}}
+    runs-on: ubuntu-latest
+    steps:        
+      - name: Run matrix name
+        id: device
+        run: echo echo "::set-output name=device::${{matrix.device}}"
+   id:
+     runs-on: ubuntu-latest
+     needs: matrix
+     steps:
+      - name: print
+        run: echo ${{toString(needs)}}
