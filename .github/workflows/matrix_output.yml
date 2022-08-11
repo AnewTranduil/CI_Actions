@@ -8,13 +8,14 @@ jobs:
     strategy:
       matrix:
         device: ["first", "second"]
+        id: [1, 2]
     outputs:
-      device: ${{steps.device.outputs.device}}
+      device1: ${{matrix.device}}
     runs-on: ubuntu-latest
     steps:        
       - name: Run matrix name
         id: device
-        run: echo echo "::set-output name=device::${{matrix.device}}"
+        run: echo echo "::set-output name=device${{matrix.id}}::${{matrix.device}}"
    id:
      runs-on: ubuntu-latest
      needs: matrix
