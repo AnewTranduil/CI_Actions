@@ -46,11 +46,7 @@ jobs:
           body: Worflow ${{ github.workflow }} of ${{ github.repository }} has \n
                 asdasdasdkiadas \n
                 last line
-          html_body: Worflow ${{ github.workflow }} of ${{ github.repository }} has <br>
-                     asdasdasd asd<br>
-                     Testing new line <br>
-                     ${{toJSON(needs)}}
-            
+          html_body: file://report_support.html
     # comma-separated string, send email to
           to: tranduil15@gmail.com
     # from email name
