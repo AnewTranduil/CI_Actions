@@ -43,6 +43,6 @@ jobs:
           body: Worflow ${{ github.workflow }} of ${{ github.repository }} has \n
                 asdasdasdkiadas \n
                 last line
-          html_body: file://report_support.html
+          attachments: report_support.html
           to: tranduil15@gmail.com
           from: Artem
