@@ -6,7 +6,7 @@ jobs:
    ff:
     runs-on: ubuntu-latest
     steps:
-      - run: exit 0
+      - run: exit 1
    echo:
     needs: ff
     runs-on: ubuntu-latest
