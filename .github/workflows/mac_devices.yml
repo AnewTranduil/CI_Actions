@@ -17,4 +17,4 @@ jobs:
       - name: where chrome
         shell: bash
         run: |
-         ls C:\Program Files  
+         ls "C:\Program Files"  
