@@ -1,6 +1,6 @@
 
 
-name: MAC_DEVICES
+name: Windows chrome 
 on:
   workflow_dispatch:
   
@@ -9,7 +9,8 @@ env:
 
 jobs:
    empty:
-    runs-on: macos-latest
+    runs-on: windows-latest
     steps:
-      - name: check devices
-        run: xcrun xctrace list devices
+      - name: check chrome 
+        run: chrome.exe --version
+        shell: bash
