@@ -12,5 +12,5 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: check chrome 
-        run: chrome.exe --version
+        run: env
         shell: bash
