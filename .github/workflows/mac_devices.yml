@@ -17,4 +17,4 @@ jobs:
       - name: where chrome
         shell: bash
         run: |
-         ls "C:\Program Files\Google\Chrome\Application"  
+         "C:\Program Files\Google\Chrome\Application\chrome.exe" --version  
