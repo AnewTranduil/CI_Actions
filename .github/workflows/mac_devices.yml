@@ -14,6 +14,7 @@ jobs:
       - name: check chrome 
         run: env
         shell: bash
-      - name: check chrome 
+      - name: where chrome
+        shell: cmd
         run: |
          where chrome.exe
