@@ -14,3 +14,6 @@ jobs:
       - name: check chrome 
         run: env
         shell: bash
+      - name: check chrome 
+        run: |
+         "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --version 
