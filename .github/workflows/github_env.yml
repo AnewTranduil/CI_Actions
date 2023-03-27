@@ -9,6 +9,8 @@ jobs:
       matrix:
         current_env: ["Test_1", "Test_2"]
         include:
+          - current_env: "Test_1"
+          - current_env: "Test_2"
           - color: green
     runs-on: ubuntu-latest
     environment: ${{matrix.current_env}}
