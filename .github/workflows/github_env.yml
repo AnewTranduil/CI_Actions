@@ -13,6 +13,8 @@ jobs:
           - color: green
     runs-on: ubuntu-latest
     environment: ${{matrix.current_env}}
+    env: 
+      CHECK: ${{vars.CHECK}}
     steps:        
       - run: echo "$CHECK"
       - run: echo ${{matrix.color}}
