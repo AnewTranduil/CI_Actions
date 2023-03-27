@@ -1,0 +1,17 @@
+
+name: Matrix Env
+on:
+  workflow_dispatch:
+
+jobs:
+   matrix:
+    strategy:
+      matrix:
+        current_env: ["Test_1", "Test_2"]
+        include:
+          - color: green
+    runs-on: ubuntu-latest
+    environment: ${{matrix.current_env}}
+    steps:        
+      - run: echo "$CHECK"
+      - run: echo ${{matrix.color}}
