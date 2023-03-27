@@ -15,5 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     container: ${{matrix.current_env}}
     steps:        
-      - run: echo "Hello"
+      - run: |
+          cat /etc/os-release
+          lsb_release -a
+          hostnamectl
       - run: echo ${{matrix.color}}
