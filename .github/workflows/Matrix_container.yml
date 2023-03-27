@@ -1,0 +1,19 @@
+
+
+name: Matrix Container
+on:
+  workflow_dispatch:
+
+jobs:
+   matrix:
+    strategy:
+      matrix:
+        include:
+          - current_env: alpine
+          - current_env: debian
+          - color: green
+    runs-on: ubuntu-latest
+    container: ${{matrix.current_env}}
+    steps:        
+      - run: echo "Hello"
+      - run: echo ${{matrix.color}}
