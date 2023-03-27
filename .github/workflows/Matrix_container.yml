@@ -17,6 +17,4 @@ jobs:
     steps:        
       - run: |
           cat /etc/os-release
-          lsb_release -a
-          hostnamectl
       - run: echo ${{matrix.color}}
