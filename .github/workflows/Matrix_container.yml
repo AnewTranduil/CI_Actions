@@ -17,4 +17,5 @@ jobs:
     steps:        
       - run: |
           cat /etc/os-release
+          env
       - run: echo ${{matrix.color}}
