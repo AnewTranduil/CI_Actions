@@ -11,3 +11,5 @@ jobs:
     steps:
       - name: check cast
         run: echo ${{!env.TEST_VAR}}
+      - name: check cast
+        run: echo ${{!env.TEST_VAR11}}  
