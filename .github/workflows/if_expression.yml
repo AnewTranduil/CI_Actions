@@ -11,3 +11,5 @@ jobs:
     steps:
       - name: check cast
         run: echo ${{ env.TEST_VAR == 'package' && 'robot' || 'python' }}
+      - name: check cast else
+        run: echo ${{ env.TEST_VAR == 'dackage' && 'robot' || 'python' }}  
