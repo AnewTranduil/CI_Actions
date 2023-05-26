@@ -1,0 +1,13 @@
+name: Casts
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  cast:
+    runs-on: ubuntu-latest
+    env:
+      TEST_VAR: "package"
+    steps:
+      - name: check cast
+        run: echo ${{!env.TEST_VAR}}
