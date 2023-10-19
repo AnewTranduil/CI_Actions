@@ -18,3 +18,4 @@ jobs:
     steps:        
       - run: echo "$CHECK"
       - run: echo ${{matrix.color}}
+      - run: java --version
