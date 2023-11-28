@@ -1,5 +1,5 @@
 
-name: Matrix Env
+name: GITHUB Env
 on:
   workflow_dispatch:
 
@@ -9,13 +9,14 @@ jobs:
       matrix:
         include:
           - current_env: "Test_1"
-          - current_env: "Test_2"
           - color: green
     runs-on: ubuntu-latest
     environment: ${{matrix.current_env}}
     env: 
       CHECK: ${{vars.CHECK}}
+      secret: ${{secrets:SUPER_SECRET}}
     steps:        
       - run: echo "$CHECK"
       - run: echo ${{matrix.color}}
+      - run: echo "$secret"
       - run: java --version
