@@ -14,7 +14,7 @@ jobs:
     environment: ${{matrix.current_env}}
     env: 
       CHECK: ${{vars.CHECK}}
-      secret: ${{secrets:SUPER_SECRET}}
+      secret: ${{secrets.SUPER_SECRET}}
     steps:        
       - run: echo "$CHECK"
       - run: echo ${{matrix.color}}
