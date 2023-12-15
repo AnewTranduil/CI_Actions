@@ -20,7 +20,7 @@ jobs:
       - run: echo "$CHECK"
       - run: echo ${{matrix.color}}
       - run: echo "$secret"
-      - run: echo "${{github.even_name == 'workflow_dispatch'}}"
+      - run: echo "${{github.event_name == 'workflow_dispatch' && 'Manual' || 'Something else' }}"
       - run: java --version
       - uses: actions/checkout@v3
         with: 
