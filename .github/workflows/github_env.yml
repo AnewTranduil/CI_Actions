@@ -16,7 +16,7 @@ jobs:
       CHECK: ${{vars.CHECK}}
       secret: ${{secrets.SUPER_SECRET}}
     steps:        
-      - run: echo ${{ toJSON(github) }}
+      - run: echo "${{ toJSON(github) }}"
       - run: echo "$CHECK"
       - run: echo ${{matrix.color}}
       - run: echo "$secret"
