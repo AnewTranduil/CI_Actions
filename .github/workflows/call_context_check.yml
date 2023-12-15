@@ -1,0 +1,10 @@
+name: Check context of called workflow  
+
+on:
+  workflow_dispatch
+
+
+jobs: 
+  github_context:
+    uses: ./.github/workflows/github_env.yml
+  
