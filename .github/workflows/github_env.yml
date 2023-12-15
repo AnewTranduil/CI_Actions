@@ -21,3 +21,6 @@ jobs:
       - run: echo ${{matrix.color}}
       - run: echo "$secret"
       - run: java --version
+      - uses: actions/checkout@v3
+        with: 
+          ref: ${{github.ref}}
