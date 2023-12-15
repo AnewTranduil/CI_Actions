@@ -1,10 +1,20 @@
 name: Check context of called workflow  
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs: 
+      selected:
+        type: choice
+        options:
+          - master
+          - main
 
 
 jobs: 
   github_context:
     uses: ./.github/workflows/github_env.yml
-  
+
+  choice: 
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{inputs.selected}}"
