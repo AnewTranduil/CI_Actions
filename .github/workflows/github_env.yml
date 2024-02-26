@@ -23,7 +23,7 @@ jobs:
       - run: echo "$secret"
       - run: echo "${{(github.event_name == 'workflow_dispatch' || github.event_name == 'schedule') && 'Manual' || 'Something else' }}"
       - run: java --version
-      - run: apt-get install xmlstarlet
+      - run: sudo apt-get install xmlstarlet
       - uses: actions/checkout@v3
         with: 
           ref: ${{github.ref}}
