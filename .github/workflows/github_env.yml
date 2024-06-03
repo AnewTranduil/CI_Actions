@@ -34,7 +34,7 @@ jobs:
       - name: parse json
         id: parse_json
         run: |
-          echo version=$(node -p \"require('./test.json').version\") >> $GITHUB_OUTPUT
+          echo version=$(node -p "require('./test.json').version") >> $GITHUB_OUTPUT
       - run: echo "Using output from previous action ==>:$CURRENT_VAR" 
         env:
           CURRENT_VAR: ${{steps.parse_json.outputs.version}}
