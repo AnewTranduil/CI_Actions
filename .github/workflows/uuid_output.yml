@@ -41,5 +41,6 @@ jobs:
           echo ${{fromJSON(needs.id.outputs.empty)}}
           echo ${{fromJSON(needs.id.outputs.empty).include}}
           echo ${{fromJSON(needs.id.outputs.empty).include == '[]'}}
+          echo ${{fromJSON(needs.id.outputs.empty).include[0] == null}}
           echo ${{fromJSON(needs.id.outputs.empty).include == 'Array'}}
 
