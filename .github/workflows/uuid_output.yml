@@ -8,13 +8,16 @@ jobs:
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
       matrix: ${{ steps.set-matrix.outputs.matrix }}
+      empty: ${{ steps.set-empty.outputs.matrix}}
     steps:
       - name: generate uuid
         id: uuid
         run: |
           echo "::set-output name=uuid::$(uuidgen)"
       - id: set-matrix
-        run: echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT    
+        run: echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT  
+      - id: set-empty
+        run: echo "matrix={\"include\":[]}" >> $GITHUB_OUTPUT   
    running:
     needs: id
     strategy:
@@ -34,4 +37,9 @@ jobs:
       - run: |
           echo ${{fromJSON(needs.id.outputs.matrix)}}
           echo ${{fromJSON(needs.id.outputs.matrix).include}}
+      - run: |
+          echo ${{fromJSON(needs.id.outputs.empty)}}
+          echo ${{fromJSON(needs.id.outputs.empty).include}}
+          echo ${{fromJSON(needs.id.outputs.empty).include == '[]'}}
+          echo ${{fromJSON(needs.id.outputs.empty).include == 'Array'}}
 
