@@ -7,11 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: generate uuid
         id: uuid
         run: |
           echo "::set-output name=uuid::$(uuidgen)"
+      - id: set-matrix
+        run: echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT    
    running:
     needs: id
     strategy:
@@ -28,3 +31,7 @@ jobs:
       - run: |
           echo "$BATCH_ID"
           env
+      - run: |
+          echo ${{fromJSON(needs.id.outputs.matrix)}}
+          echo ${{fromJSON(needs.id.outputs.matrix).include}}
+
