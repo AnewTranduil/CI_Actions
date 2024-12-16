@@ -13,5 +13,5 @@ jobs:
     needs: first
     runs-on: ubuntu-latest
     steps:
-     - run: echo ${{needs.result}}
+     - run: echo ${{needs.first.result}}
       
