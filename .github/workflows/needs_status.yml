@@ -1,0 +1,16 @@
+name: GITHUB Needs status
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  first:
+    runs-on: ubuntu-latest
+    steps:        
+      - run: exit 1
+  second: 
+    needs: first
+    runs-on: ubuntu-latest
+    steps:
+     - run: echo ${{needs.first}}
+      
