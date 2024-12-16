@@ -9,6 +9,7 @@ jobs:
     steps:        
       - run: exit 1
   second: 
+    if: always()
     needs: first
     runs-on: ubuntu-latest
     steps:
