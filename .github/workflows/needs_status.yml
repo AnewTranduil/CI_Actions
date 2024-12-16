@@ -11,7 +11,7 @@ jobs:
   first1:
     runs-on: ubuntu-latest
     steps:        
-      - run: echo "${{toJSON(github.event)}}"
+      - run: echo "${{toJSON(github.event_name)}}"
   second: 
     if: always()
     needs: first
