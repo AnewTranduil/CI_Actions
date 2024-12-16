@@ -13,5 +13,5 @@ jobs:
     needs: first
     runs-on: ubuntu-latest
     steps:
-     - run: echo ${{ toJSON(needs.first)}}
+     - run: echo ${{needs.result}}
       
