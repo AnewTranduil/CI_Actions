@@ -8,10 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:        
       - run: exit 1
+  first1:
+    runs-on: ubuntu-latest
+    steps:        
+      - run: echo "${{toJSON(github.event)}}"
   second: 
     if: always()
     needs: first
     runs-on: ubuntu-latest
     steps:
      - run: echo ${{needs.first.result}}
+     - run: echo ${{needs.first1.result}}
       
