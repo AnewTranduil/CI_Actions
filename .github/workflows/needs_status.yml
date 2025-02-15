@@ -14,9 +14,9 @@ jobs:
       - run: echo "${{toJSON(github.event_name)}}"
   second: 
     if: always()
-    needs: first
+    needs: [first, first1]
     runs-on: ubuntu-latest
     steps:
-     - run: echo ${{needs.first.status}}
-     - run: echo ${{needs.first1.status}}
+     - run: echo ${{needs.first.result}}
+     - run: echo ${{needs.first1.result}}
       
