@@ -17,6 +17,6 @@ jobs:
     needs: first
     runs-on: ubuntu-latest
     steps:
-     - run: echo ${{needs.first.result}}
-     - run: echo ${{needs.first1.result}}
+     - run: echo ${{needs.first.status}}
+     - run: echo ${{needs.first1.status}}
       
