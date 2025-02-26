@@ -57,11 +57,10 @@ jobs:
     name: Java Build
     runs-on: ubuntu-22.04
     needs: [setup, output-binaries]
-    if: ${{ needs.setup.outputs.test && !cancelled() }}
     steps:
       - name: Echo
         run: |
           echo "I'm here: ${{needs.output-binaries.outputs.binaries}}"
       - name: Data 
         run: | 
-          echo ${{toJSON(needs)}}
+          echo "${{toJSON(needs)}}"
