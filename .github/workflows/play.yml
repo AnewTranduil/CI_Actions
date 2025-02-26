@@ -1,0 +1,64 @@
+
+name: Play
+
+run-name: Play (${{github.event.pull_request.title}})
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-22.04
+    outputs:
+      test: ${{ steps.echo.outputs.test }}
+    steps:
+      - name: Echo
+        id: echo
+        run: echo "test=setup" >> "$GITHUB_OUTPUT"
+  
+  download-js-binaries:
+    needs: [setup]
+    name: Download JS binaries from release
+    runs-on: ubuntu-22.04
+    if: needs.setup.outputs.test
+    outputs:
+      binaries: ${{ steps.echo.outputs.test }}
+    steps:
+      - name: Echo
+        id: echo
+        run: echo "test=download" >> "$GITHUB_OUTPUT"
+        
+  js-sign-mac-binary:
+    needs: [setup]
+    name: Sign MAC binary
+    runs-on: ubuntu-22.04
+    if: 1 != 1
+    outputs:
+      binArtifacts: ${{ steps.echo.outputs.test }}
+    steps:
+      - name: Echo
+        id: echo
+        run: echo "test=sign" >> "$GITHUB_OUTPUT"
+
+  output-binaries:
+    needs: [download-js-binaries, js-sign-mac-binary]
+    name: Output Binaries
+    runs-on: ubuntu-22.04
+    if: ${{ !cancelled() && (needs.download-js-binaries.result != 'skipped' || needs.js-sign-mac-binary.result != 'skipped') }}
+    outputs:
+      binaries: ${{needs.download-js-binaries.outputs.binaries || needs.js-sign-mac-binary.outputs.binArtifacts}}
+    steps:
+      - name: Echo
+        run: |
+          echo "Binaries: ${{needs.download-js-binaries.outputs.binaries || needs.js-sign-mac-binary.outputs.binArtifacts}}"
+  java-build:
+    name: Java Build
+    runs-on: ubuntu-22.04
+    needs: [setup, output-binaries]
+    if: needs.setup.outputs.test
+    steps:
+      - name: Echo
+        run: |
+          echo "I'm here: ${{needs.output-binaries.outputs.binaries}}"
