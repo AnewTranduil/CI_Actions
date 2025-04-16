@@ -1,0 +1,23 @@
+name: Complex flow 
+
+on:
+  workflow_dispatch:
+
+
+jobs: 
+  first-batch:
+    runs-on: ubuntu-latest 
+    steps:
+      - run: | 
+         echo "First batch"
+  second-batch:
+    runs-on: ubuntu-latest 
+    steps:
+      - run: | 
+         echo "Second batch"  
+  third-batch:
+    runs-on: ubuntu-latest 
+    steps:
+      - run: | 
+         echo "Third batch"         
+  
