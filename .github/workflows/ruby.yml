@@ -12,6 +12,7 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         ruby-version: ['2.6', '2.7', '3.0']
 
@@ -22,4 +23,6 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
     - name: Run tests
-      run: bundle install sorted_set
+      run: |
+       bundle init
+       bundle add sorted_set
