@@ -8,14 +8,12 @@ permissions:
   contents: read
 
 jobs:
-  test:
-
+  ubuntu:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         ruby-version: ['2.6', '2.7', '3.0']
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up Ruby
@@ -26,3 +24,20 @@ jobs:
       run: |
        bundle init
        bundle add sorted_set
+
+  windows:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: ['2.6', '2.7', '3.0']
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+    - name: Run tests
+      run: |
+       bundle init
+       bundle add sorted_set       
