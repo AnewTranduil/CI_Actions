@@ -10,16 +10,19 @@ jobs:
     steps:
       - run: | 
          echo "First batch"
+         cat /etc/hosts
          unzip --help
   second-batch:
     runs-on: macos-latest 
     steps:
       - run: | 
          echo "Second batch"  
+         cat /etc/hosts
          unzip --help
   third-batch:
-    runs-on: ubuntu-latest 
+    runs-on: windows-latest 
     steps:
       - run: | 
-         echo "Third batch"         
+         echo "Third batch"
+         cat C:\Windows\System32\drivers\etc\hosts
              
