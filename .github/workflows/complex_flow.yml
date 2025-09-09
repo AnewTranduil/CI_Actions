@@ -10,35 +10,16 @@ jobs:
     steps:
       - run: | 
          echo "First batch"
+         unzip --help
   second-batch:
-    runs-on: ubuntu-latest 
+    runs-on: macos-latest 
     steps:
       - run: | 
          echo "Second batch"  
+         unzip --help
   third-batch:
     runs-on: ubuntu-latest 
     steps:
       - run: | 
          echo "Third batch"         
-
-  report:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-           - need: "first-batch"
-             name: "Test" 
-           - need: "second-batch"
-             name: "Uat"
-           - need: "third-batch"
-             name: "Prod"
-    needs: ${{matrix.need}}
-    steps: 
-      - run: echo ${{matrix.name}}
-
-  notification: 
-    runs-on: ubuntu-latest
-    needs: report
-    steps:
-      - run: echo "Notification"
              
