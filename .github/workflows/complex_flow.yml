@@ -11,24 +11,27 @@ jobs:
       - run: | 
          echo "First batch"
          cat /etc/hosts
+         echo "_____________________ END __________________________"
          echo "127.0.0.1 test-linux-host" | sudo tee -a /etc/hosts
          cat /etc/hosts
-         unzip --help
+
   second-batch:
     runs-on: macos-latest 
     steps:
       - run: | 
          echo "Second batch"  
          cat /etc/hosts
+         echo "_____________________ END __________________________"
          echo "127.0.0.1 test-macos-host" | sudo tee -a /etc/hosts
          cat /etc/hosts
-         unzip --help
+
   third-batch:
     runs-on: windows-latest 
     steps:
       - run: | 
          echo "Third batch"
          cat C:\Windows\System32\drivers\etc\hosts
+         echo "_____________________ END __________________________"
          echo "127.0.0.1 test-windows-host" | tee -a C:\Windows\System32\drivers\etc\hosts
          cat C:\Windows\System32\drivers\etc\hosts
              
