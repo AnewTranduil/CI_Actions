@@ -34,4 +34,6 @@ jobs:
          echo "_____________________ END __________________________"
          echo "127.0.0.1 test-windows-host" | tee -a C:\Windows\System32\drivers\etc\hosts
          cat C:\Windows\System32\drivers\etc\hosts
+      - uses: actions/checkout@v5
+      - run: node test.js
              
