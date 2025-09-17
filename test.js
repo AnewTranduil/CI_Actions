@@ -52,8 +52,8 @@ const server = cp.spawn("node", ["./simple.js"], options)
 
 async function check() {
   try {
-        const hostnameCheckResponse = await fetch(`http://test-windows-host:8080`)
-        console.log(`Hostname check request to http://test-windows-host:8080 - Status: ${hostnameCheckResponse.status}`)
+        const hostnameCheckResponse = await fetch(`http://windows.local.test:8080`)
+        console.log(`Hostname check request to http://windows.local.test:8080 - Status: ${hostnameCheckResponse.status}`)
         } catch (error) {
         console.log(`Hostname check request failed: ${error.message}`)
     }
