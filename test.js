@@ -1,7 +1,6 @@
 "use strict";
 const path = require("path");
 const cp = require("child_process");
-const fetch = require("node-fetch")
 const options = {stdio: "inherit"}
 const server = cp.spawn("node", ["./simple.js"], options)
 
