@@ -42,6 +42,7 @@ const server = cp.spawn("node", ["./simple.js"], options)
         await check()
     } finally {
         console.log('4 try')
+        server.kill();
     }
   }, 64000); 
 
