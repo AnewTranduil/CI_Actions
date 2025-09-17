@@ -60,7 +60,6 @@ const server = http.createServer((req, res) => {
             <li><strong>Host:</strong> ${req.headers.host || 'Unknown'}</li>
             <li><strong>X-forwarded-for:</strong> ${req.headers['x-forwarded-for'] || 'Unknown'}</li>
             <li><strong>remoteAddress:</strong> ${req.connection.remoteAddress || 'Unknown'}</li>
-            <li><strong>Server ip: </strong>${ip}</li>
         </ul>
         
         <h2> Meme 🎭</h2>
@@ -74,9 +73,6 @@ const server = http.createServer((req, res) => {
         <h2>Available Endpoints</h2>
         <ul>
             <li><code>GET /</code> - This page</li>
-            <li><code>GET /health</code> - Health check</li>
-            <li><code>GET /api/status</code> - JSON status response</li>
-            <li><code>GET /meme</code> - Random programming meme</li>
         </ul>
     </div>
 </body>
