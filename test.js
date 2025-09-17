@@ -4,7 +4,7 @@ const cp = require("child_process");
 const options = {stdio: "inherit"}
 const server = cp.spawn("node", ["./simple.js"], options)
 
-(async () => {
+;(async () => {
   setTimeout(async () => {
     try {
         await check()
