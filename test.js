@@ -6,7 +6,7 @@ const options = {stdio: "inherit"}
 const server = cp.spawn("node", ["./simple.js"], options)
 
 (async () => {
-  setTimeout(() => {
+  setTimeout(async () => {
     try {
         await check()
     } finally {
@@ -14,7 +14,7 @@ const server = cp.spawn("node", ["./simple.js"], options)
     }
   }, 4000);
 
-  setTimeout(() => {
+  setTimeout(async () => {
     try {
         await check()
     } finally {
@@ -22,7 +22,7 @@ const server = cp.spawn("node", ["./simple.js"], options)
     }
   }, 8000);
 
-  setTimeout(() => {
+  setTimeout(async () => {
     try {
         await check()
     } finally {
@@ -30,7 +30,7 @@ const server = cp.spawn("node", ["./simple.js"], options)
     }
   }, 16000);
 
-  setTimeout(() => {
+  setTimeout(async () => {
     try {
         await check()
     } finally {
