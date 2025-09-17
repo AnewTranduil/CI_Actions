@@ -53,16 +53,12 @@ async function check() {
   try {
         const hostnameCheckResponse = await fetch(`http://test-windows-host:8080`)
         console.log(`Hostname check request to http://test-windows-host:8080 - Status: ${hostnameCheckResponse.status}`)
-        const hostnameCheckBody = await hostnameCheckResponse.text()
-        console.log(`Hostname check response body: ${hostnameCheckBody}`)
         } catch (error) {
         console.log(`Hostname check request failed: ${error.message}`)
     }
     try {
         const hostnameCheckResponse = await fetch(`http://localhost:8080`)
         console.log(`Hostname check request to http://localhost:8080 - Status: ${hostnameCheckResponse.status}`)
-        const hostnameCheckBody = await hostnameCheckResponse.text()
-        console.log(`Hostname check response body: ${hostnameCheckBody}`)
         } catch (error) {
         console.log(`Hostname check request failed: ${error.message}`)
     }
