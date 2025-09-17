@@ -17,7 +17,7 @@ const server = cp.spawn("node", ["./simple.js"], options)
     try {
         await check()
     } finally {
-        console.log('1 try')
+        console.log('2 try')
     }
   }, 8000);
 
@@ -25,7 +25,7 @@ const server = cp.spawn("node", ["./simple.js"], options)
     try {
         await check()
     } finally {
-        console.log('1 try')
+        console.log('3 try')
     }
   }, 16000);
 
@@ -33,9 +33,17 @@ const server = cp.spawn("node", ["./simple.js"], options)
     try {
         await check()
     } finally {
-        console.log('1 try')
+        console.log('4 try')
     }
   }, 32000);  
+
+    setTimeout(async () => {
+    try {
+        await check()
+    } finally {
+        console.log('4 try')
+    }
+  }, 64000); 
 
   
 })();
@@ -45,6 +53,14 @@ async function check() {
   try {
         const hostnameCheckResponse = await fetch(`http://test-windows-host:8080`)
         console.log(`Hostname check request to http://test-windows-host:8080 - Status: ${hostnameCheckResponse.status}`)
+        const hostnameCheckBody = await hostnameCheckResponse.text()
+        console.log(`Hostname check response body: ${hostnameCheckBody}`)
+        } catch (error) {
+        console.log(`Hostname check request failed: ${error.message}`)
+    }
+    try {
+        const hostnameCheckResponse = await fetch(`http://localhost:8080`)
+        console.log(`Hostname check request to http://localhost:8080 - Status: ${hostnameCheckResponse.status}`)
         const hostnameCheckBody = await hostnameCheckResponse.text()
         console.log(`Hostname check response body: ${hostnameCheckBody}`)
         } catch (error) {
