@@ -1,5 +1,4 @@
 import http from 'http'
-import fetch from 'node-fetch'
 const port = 8080
 
 const server = http.createServer((req, res) => {
